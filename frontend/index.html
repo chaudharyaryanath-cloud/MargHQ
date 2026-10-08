@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#0a1012" />
+		<title>MargHQ | Career direction, made tangible</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" href="/static/style.css" />
+		<script src="/static/script.js" defer></script>
+	</head>
+	<body>
+		<div class="ambient-grid" aria-hidden="true"></div>
+		<div class="site-shell">
+			<header class="topbar">
+				<a class="brand" href="/" aria-label="MargHQ home"><span class="brand-mark" aria-hidden="true">M</span><span>Marg<span class="brand-accent">HQ</span></span></a>
+				<div class="system-status"><span class="status-light"></span> CAREER NAVIGATION SYSTEM</div>
+				<a class="top-link" href="#workspace">Explore <span aria-hidden="true">↘</span></a>
+			</header>
+
+			<main>
+				<section class="hero" aria-labelledby="hero-title">
+					<div class="hero-copy">
+						<p class="eyebrow"><span>01</span> YOUR NEXT CHAPTER, MAPPED</p>
+						<h1 id="hero-title">Find your direction.<br /><span>Make it real.</span></h1>
+						<p class="hero-description">Get a clearer read on the work that fits you, then turn a career idea into a practical plan you can start this week.</p>
+					</div>
+					<div class="hero-stamp" aria-label="Two ways to move forward"><span class="stamp-orbit" aria-hidden="true"></span><span class="stamp-number">02</span><span class="stamp-caption">WAYS TO<br />MOVE FORWARD</span></div>
+				</section>
+
+				<section id="workspace" class="workspace" aria-label="Career tools">
+					<div class="workspace-heading">
+						<div><p class="eyebrow"><span>SELECT A PATH</span></p><h2>Where do you want to begin?</h2></div>
+						<div class="mode-switch" role="tablist" aria-label="Career tools">
+							<button id="explore-tab" class="mode-button is-active" type="button" role="tab" aria-selected="true" aria-controls="explore-panel" data-mode="explore"><span class="mode-index">A</span> Explore careers</button>
+							<button id="workflow-tab" class="mode-button" type="button" role="tab" aria-selected="false" aria-controls="workflow-panel" data-mode="workflow" tabindex="-1"><span class="mode-index">B</span> Build a workflow</button>
+						</div>
+					</div>
+
+					<section id="explore-panel" class="mode-panel" role="tabpanel" aria-labelledby="explore-tab">
+						<div class="panel-intro">
+							<div class="panel-symbol" aria-hidden="true">◎</div>
+							<div><p class="eyebrow">CAREER EXPLORATION QUIZ</p><h3>Start with how you work.</h3><p>Answer eight quick questions about your focus, energy, and instincts. Get a direction to explore, plus starter projects to test the fit.</p></div>
+							<div class="time-note"><span class="time-dot"></span> ABOUT 3 MIN</div>
+						</div>
+
+						<div class="explore-layout">
+							<form id="assessment-form" class="assessment-form">
+								<div class="form-topline">
+									<label class="name-field" for="name"><span class="field-label">YOUR NAME</span><input id="name" name="name" type="text" placeholder="What should we call you?" maxlength="80" required /></label>
+									<p class="scale-key"><span>1</span> LOW / LESS <span class="key-divider">→</span> HIGH / MORE <span>5</span></p>
+								</div>
+								<fieldset class="question" data-question="frustration_tolerance"><legend><span class="question-number">01</span> When work gets frustrating, how do you respond?</legend><p class="question-hint">Your patience when a problem takes more than one attempt.</p><div class="rating-options" aria-label="Frustration tolerance from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="immersion"><legend><span class="question-number">02</span> How easily do you get absorbed in a task?</legend><p class="question-hint">How much you enjoy sustained focus and deep work.</p><div class="rating-options" aria-label="Immersion from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="failure_resilience"><legend><span class="question-number">03</span> How do you handle a setback or a wrong turn?</legend><p class="question-hint">How readily you learn from attempts that do not work.</p><div class="rating-options" aria-label="Failure resilience from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="energy_level"><legend><span class="question-number">04</span> How much energy do you usually bring to work?</legend><p class="question-hint">Your typical pace across a day of meaningful tasks.</p><div class="rating-options" aria-label="Energy level from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="social_energy"><legend><span class="question-number">05</span> How much do you enjoy collaborating with people?</legend><p class="question-hint">The amount of discussion and teamwork that feels energizing.</p><div class="rating-options" aria-label="Social energy from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="preference_for_structure"><legend><span class="question-number">06</span> How much structure do you prefer in your day?</legend><p class="question-hint">Whether clear routines or open-ended plans suit you better.</p><div class="rating-options" aria-label="Structure preference from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="creative_drive"><legend><span class="question-number">07</span> How much do you enjoy inventing new approaches?</legend><p class="question-hint">Your interest in making, imagining, and trying fresh ideas.</p><div class="rating-options" aria-label="Creative drive from 1 to 5"></div></fieldset>
+								<fieldset class="question" data-question="problem_solving_drive"><legend><span class="question-number">08</span> How much do you enjoy untangling difficult problems?</legend><p class="question-hint">Your curiosity when a challenge needs careful thinking.</p><div class="rating-options" aria-label="Problem-solving drive from 1 to 5"></div></fieldset>
+								<div class="form-actions"><p>There are no right answers. This is a starting point, not a label.</p><button class="action-button" type="submit"><span>Get my direction</span><span class="button-arrow" aria-hidden="true">↗</span></button></div>
+							</form>
+							<aside id="assessment-result" class="result-panel" aria-live="polite" aria-label="Career exploration result">
+								<div class="empty-result"><span class="result-crosshair" aria-hidden="true">+</span><p class="eyebrow">YOUR READOUT</p><h4>A useful direction<br />starts with you.</h4><p>Your strongest career match and project ideas will appear here after the quiz.</p><div class="readout-line"><span>PROFILE STATUS</span><span>AWAITING INPUT</span></div></div>
+							</aside>
+						</div>
+					</section>
+
+					<section id="workflow-panel" class="mode-panel" role="tabpanel" aria-labelledby="workflow-tab" hidden>
+						<div class="panel-intro workflow-intro">
+							<div class="panel-symbol warm-symbol" aria-hidden="true">↗</div>
+							<div><p class="eyebrow">CAREER WORKFLOW BUILDER</p><h3>Turn a job title into next steps.</h3><p>Enter a role you want to explore. MargHQ will lay out a simple 12-week path from learning the foundations to presenting your work and applying.</p></div>
+							<div class="time-note"><span class="time-dot warm-dot"></span> 3 PHASES</div>
+						</div>
+						<form id="roadmap-form" class="roadmap-form">
+							<label for="target-job" class="target-label"><span class="field-label">THE CAREER YOU'RE AIMING FOR</span><span class="target-input-row"><input id="target-job" name="targetJob" type="text" maxlength="120" placeholder="e.g. UX designer, data analyst, teacher" required /><button class="action-button warm-button" type="submit"><span>Build my workflow</span><span class="button-arrow" aria-hidden="true">↗</span></button></span></label>
+						</form>
+						<div id="roadmap-result" class="roadmap-result" aria-live="polite"><div class="roadmap-empty"><span class="roadmap-empty-mark" aria-hidden="true">01 <i></i> 02 <i></i> 03</span><p>Your workflow will appear here, with clear phases, suggested actions, and a realistic timeline.</p></div></div>
+					</section>
+				</section>
+			</main>
+
+			<footer class="footer"><a class="brand footer-brand" href="/" aria-label="MargHQ home"><span class="brand-mark" aria-hidden="true">M</span><span>Marg<span class="brand-accent">HQ</span></span></a><p>Clarity is a direction. Progress is a practice.</p><a href="/docs" class="api-link">API STATUS <span aria-hidden="true">↗</span></a></footer>
+		</div>
+	</body>
+</html>
