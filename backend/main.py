@@ -8,24 +8,31 @@ from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field, field_validator
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-FRONTEND_DIR = BASE_DIR / "frontend"
+# Detect base path whether running locally or on hosting providers
+BASE_DIR = Path(__file__).resolve().parent
+FRONTEND_DIR = BASE_DIR.parent / "frontend" if (BASE_DIR.parent / "frontend").exists() else BASE_DIR / "frontend"
 
 app = FastAPI(title="MargHQ", version="1.0.0")
+
+# Enable CORS for all incoming frontend domains (Vercel, GitHub Pages, Localhost)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
-    allow_credentials=False,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
-app.mount("/frontend", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
+
+if FRONTEND_DIR.exists():
+    app.mount("/static", StaticFiles(directory=str(FRONTEND_DIR)), name="static")
+    app.mount("/frontend", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
 
 @app.get("/")
 def home():
-    return FileResponse(FRONTEND_DIR / "index.html")
+    if FRONTEND_DIR.exists() and (FRONTEND_DIR / "index.html").exists():
+        return FileResponse(FRONTEND_DIR / "index.html")
+    return {"status": "ok", "message": "MargHQ API is running"}
 
 
 class AssessmentInput(BaseModel):
@@ -142,11 +149,15 @@ def health():
     return {"status": "ok", "message": "MargHQ is ready"}
 
 
+# Accepts requests under both /assess and /api/assess
+@app.post("/assess")
 @app.post("/api/assess")
 def assess(data: AssessmentInput):
     return score_profile(data)
 
 
+# Accepts requests under both /find-career and /api/find-career
+@app.post("/find-career")
 @app.post("/api/find-career")
 def find_career(request: CareerRequest):
     labels = [normalize(value) for value in [*request.interests, *request.strengths]]
@@ -173,7 +184,9 @@ def find_career(request: CareerRequest):
     return {"best_match": top_matches[0], "alternatives": top_matches[1:], "input": request.model_dump()}
 
 
+# Accepts requests under both /generate-roadmap and /api/generate-roadmap
 @app.post("/generate-roadmap")
+@app.post("/api/generate-roadmap")
 def generate_roadmap(req: JobRequest):
     job = req.targetJob
     stages = [
