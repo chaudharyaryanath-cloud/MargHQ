@@ -129,7 +129,7 @@ roadmapForm.addEventListener("submit", async (event) => {
   submitButton.querySelector("span").textContent = "Mapping your steps...";
 
   try {
-    const response = await fetch("/generate-roadmap", {
+    const response = await fetch("http://127.0.0.1:8000/generate-roadmap ", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ targetJob })
